@@ -1,0 +1,78 @@
+= messagepub
+
+* http://messagepub.com
+
+== DESCRIPTION:
+
+* MessagePub is a dead-simple messaging API that you can start using for your applications in less than 5 minutes.
+
+* Register for an API Key at http://messagepub.com
+
+* Features:
+** Support for the following platforms: Twitter, Google Chat, AIM, Email, Phone, and SMS.
+** Reach out to one person in multiple ways.
+** Helper libraries in multiple languages.
+** Schedule a message to be delivered in the future.
+** Set up an escalation schedule.
+
+* For more documentation on MessagePub, go to http://messagepub.com/documentation
+
+== FEATURES:
+
+You can currently do the following with the MessagePub gem:
+* List notifications on your account
+* Get a notification from your account
+* Create a new notification
+* Get all replies from your account.
+
+== SYNOPSIS:
+
+# Get latest notifications from your account
+client = MessagePub::Client.new('YOURAPIKEY')
+notifications = client.notifications
+
+# Get the notification with id = 1
+notification = client.notification(1)
+
+# Get all the replies from your account
+replies = notification.replies
+
+# Create a new notification
+n = MessagePub::Notification.new(:body => 'your message goes here', :escalation => 20)
+n.add_recipient(MessagePub::Recipient.new(:position => 1, :channel => 'twitter', :address => 'sharememeinc'))
+n.add_recipient(MessagePub::Recipient.new(:position => 2, :channel => 'sms', :address => '9998887777'))
+client.create!(n)
+
+
+== REQUIREMENTS:
+
+* Only one dependency: httpparty
+
+== INSTALL:
+
+* sudo gem install messagepub
+
+== LICENSE:
+
+(The MIT License)
+
+Copyright (c) 2009 FIXME full name
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
