@@ -16,5 +16,4 @@ tasks/
 test/
 test/test_helper.rb
 test/test_messagepub.rb
-website/index.txt
 
