@@ -1,52 +1,71 @@
 = messagepub
 
-* http://messagepub.com
+* Website: http://messagepub.com
 
 == DESCRIPTION:
 
 * MessagePub is a dead-simple messaging API that you can start using for your applications in less than 5 minutes.
 
+
 * Register for an API Key at http://messagepub.com
 
-* Features:
-** Support for the following platforms: Twitter, Google Chat, AIM, Email, Phone, and SMS.
-** Reach out to one person in multiple ways.
-** Helper libraries in multiple languages.
-** Schedule a message to be delivered in the future.
-** Set up an escalation schedule.
+
+* Support for the following platforms: Twitter, Google Chat, AIM, Email, Phone, and SMS.
+
+
+* Reach out to one person in multiple ways.
+
+
+* Helper libraries in multiple languages.
+
+
+* Schedule a message to be delivered in the future.
+
+
+* Set up an escalation schedule.
+
 
 * For more documentation on MessagePub, go to http://messagepub.com/documentation
+
 
 == FEATURES:
 
 You can currently do the following with the MessagePub gem:
-* List notifications on your account
-* Get a notification from your account
-* Create a new notification
+* List notifications on your account.
+* Get a notification from your account.
+* Create a new notification.
 * Get all replies from your account.
 
 == SYNOPSIS:
 
 # Get latest notifications from your account
+
 client = MessagePub::Client.new('YOURAPIKEY')
+
 notifications = client.notifications
 
 # Get the notification with id = 1
+
 notification = client.notification(1)
 
 # Get all the replies from your account
+
 replies = notification.replies
 
 # Create a new notification
+
 n = MessagePub::Notification.new(:body => 'your message goes here', :escalation => 20)
+
 n.add_recipient(MessagePub::Recipient.new(:position => 1, :channel => 'twitter', :address => 'sharememeinc'))
+
 n.add_recipient(MessagePub::Recipient.new(:position => 2, :channel => 'sms', :address => '9998887777'))
+
 client.create!(n)
 
 
 == REQUIREMENTS:
 
-* Only one dependency: httpparty
+* Only one dependency: httparty
 
 == INSTALL:
 
@@ -56,7 +75,7 @@ client.create!(n)
 
 (The MIT License)
 
-Copyright (c) 2009 FIXME full name
+Copyright (c) 2009 Luc Castera
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

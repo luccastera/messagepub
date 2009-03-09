@@ -1,8 +1,27 @@
 module MessagePub
 
-  class Notification
-  
-    attr_accessor :body, :escalation, :postback_url, :send_at, :id
+  # Represents a MessagePub notification.
+  # For more info, visit http://messagepub.com/documentation
+  class Notification  
+    
+    # The body of the message to send.
+    attr_accessor :body
+    
+    # The amount of time (in minutes) to wait before sending to the next recipient in the list.
+    attr_accessor :escalation
+    
+    # If postback_url is set in your account settings, this is the URL where MessagePub will post
+    # any replies it gets for this notification. 
+    # For more info, visit http://messagepub.com/documentation/replies.
+    attr_accessor :postback_url
+    
+    # The time in UTC at which the notification will be sent.
+    attr_accessor :send_at
+    
+    # The unique id for the notification.
+    attr_accessor :id
+    
+    # The array of recipients to which this notification will go to.
     attr_reader :recipients
   
     def initialize(options={})
@@ -18,6 +37,7 @@ module MessagePub
       @recipients << rcpt if rcpt.class == Recipient        
     end
     
+    # Returns an XML representation of the notification that can be POSTed to the REST API.    
     def to_xml
       value = '<notification>'
       value += '<body>' + self.body + '</body>'
