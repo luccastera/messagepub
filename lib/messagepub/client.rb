@@ -19,7 +19,7 @@ module MessagePub
     # In that case, you can initialize a new client by simply saying:
     #
     # <tt>client = MessagePub::Client.new</tt>
-    def initialize(api_key)
+    def initialize(api_key=nil)
       @api_key = api_key || ENV['MESSAGEPUB_API_KEY']
       self.class.basic_auth @api_key, 'password'
     end
