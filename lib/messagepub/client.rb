@@ -36,6 +36,7 @@ module MessagePub
       notifications_array = []
       response['notifications'].each do |note|
         new_note = Notification.new(:body => note["body"],
+                                    :subject => note["subject"],
                                     :send_at => note["send_at"],
                                     :id => note["id"],
                                     :escalation => note["escalation"])
@@ -58,6 +59,7 @@ module MessagePub
       response = self.class.get("/notifications/" + id.to_s + ".xml")
       note = response["notification"]
       new_note = Notification.new( :body => note["body"],
+                                   :subject => note["subject"],
                                    :id => note["id"],
                                    :send_at => note["send_at"],
                                    :escalation => note["escalation"])

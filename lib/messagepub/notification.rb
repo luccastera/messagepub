@@ -7,6 +7,9 @@ module MessagePub
     # The body of the message to send.
     attr_accessor :body
     
+    # The subject of the message to send (for emails only)
+    attr_accessor :subject
+    
     # The amount of time (in minutes) to wait before sending to the next recipient in the list.
     attr_accessor :escalation
     
@@ -26,6 +29,7 @@ module MessagePub
   
     def initialize(options={})
       @body = options[:body]
+      @subject = options[:subject]
       @escalation = options[:escalation]
       @postback_url = options[:postback_url]
       @send_at = options[:send_at]
@@ -41,6 +45,7 @@ module MessagePub
     def to_xml
       value = '<notification>'
       value += '<body>' + self.body + '</body>'
+      value += '<subject>' + self.subject + '</subject>' unless self.subject.blank?
       value += '<escalation>' + self.escalation.to_s + '</escalation>' if self.escalation
       value += '<postback_url>' + self.postback_url + '</postback_url>' if self.postback_url
       value += '<send_at>' + self.send_at + '</send_at>' if self.send_at
