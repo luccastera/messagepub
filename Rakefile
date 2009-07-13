@@ -9,7 +9,7 @@ $hoe = Hoe.new('messagepub', Messagepub::VERSION) do |p|
   p.post_install_message = 'PostInstall.txt'
   p.rubyforge_name       = p.name # TODO this is default value
   p.extra_deps         = [
-     ['httparty','>= 0.3.1'],
+     ['httparty','>= 0.4.3'],
    ]
   p.extra_dev_deps = [
     ['newgem', ">= #{::Newgem::VERSION}"]

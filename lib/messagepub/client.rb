@@ -73,6 +73,14 @@ module MessagePub
       new_note       
     end
     
+    # Cancel the notification for the unique id specified.
+    # Returns true if the notification was cancelled, false otherwise.
+    # <tt>cancelled = client.cancel_notification(4)</tt>
+    def cancel(id)
+      response = self.class.delete("/notifications/" + id.to_s + ".xml")
+      response.is_a?(Hash) && response.empty?
+    end
+    
     # Creates a new notification.
     #
     # <tt>note = MessagePub::Notification.new</tt>
