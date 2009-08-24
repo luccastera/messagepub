@@ -1,4 +1,4 @@
-%w[rubygems rake rake/clean fileutils newgem rubigen].each { |f| require f }
+%w[rubygems rake rake/clean fileutils newgem rubigen hoe].each { |f| require f }
 require File.dirname(__FILE__) + '/lib/messagepub'
 
 # Generate all the Rake tasks
@@ -8,8 +8,9 @@ $hoe = Hoe.new('messagepub', Messagepub::VERSION) do |p|
   p.changes              = p.paragraphs_of("History.txt", 0..1).join("\n\n")
   p.post_install_message = 'PostInstall.txt'
   p.rubyforge_name       = p.name # TODO this is default value
+  p.summary = "More info at http://messagepub.com"
   p.extra_deps         = [
-     ['httparty','>= 0.4.3'],
+     ['httparty','>= 0.3.1'],
    ]
   p.extra_dev_deps = [
     ['newgem', ">= #{::Newgem::VERSION}"]
