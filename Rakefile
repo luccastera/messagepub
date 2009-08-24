@@ -10,7 +10,7 @@ $hoe = Hoe.new('messagepub', Messagepub::VERSION) do |p|
   p.rubyforge_name       = p.name # TODO this is default value
   p.summary = "More info at http://messagepub.com"
   p.extra_deps         = [
-     ['httparty','>= 0.3.1'],
+     ['httparty','= 0.3.1'],
    ]
   p.extra_dev_deps = [
     ['newgem', ">= #{::Newgem::VERSION}"]
